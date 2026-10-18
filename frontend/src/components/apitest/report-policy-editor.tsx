@@ -1,0 +1,15 @@
+import { useState } from 'react'
+import { Button } from '@/components/ui/button'
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
+import { CodeArea } from '@/components/code-area'
+import { governance, pointers, useOperation } from '@/lib/api-governance'
+import { useDirtyGuard } from '@/lib/navigation-guard'
+export function ReportPolicyEditor() {
+  const [open, setOpen] = useState(false), [text, setText] = useState(''), [saved, setSaved] = useState(''), [ready, setReady] = useState(false), [discard, setDiscard] = useState(false), [notice, setNotice] = useState('')
+  const op = useOperation(), dirty = ready && text !== saved
+  useDirtyGuard({ label: '报告脱敏路径', dirty: open && dirty, locked: open && op.busy, discard: () => { setText(saved); setDiscard(false) } })
+  const close = (value: boolean) => { if (op.busy) return; if (!value && dirty) setDiscard(true); else { op.invalidate(); setOpen(value) } }
+  return <><Button type="button" variant="outline" size="sm" onClick={() => { setOpen(true); setReady(false); setNotice(''); setDiscard(false); void op.run(governance.policy, value => { const s = value.sensitiveJsonPaths.join('\n'); setText(s); setSaved(s); setReady(true) }) }}>报告脱敏设置</Button><Dialog open={open} onOpenChange={close}><DialogContent className="sm:max-w-xl"><DialogHeader><DialogTitle>报告脱敏路径</DialogTitle><DialogDescription>默认省略报文正文，并遮罩已知凭据。下面的路径从请求及响应 JSON 收集敏感值，并在整批报告各字段中遮罩；原始历史保持不变。</DialogDescription></DialogHeader>
+    {op.busy && !ready && <p role="status" className="text-xs">正在读取设置…</p>}{ready && <><label className="text-xs" htmlFor="report-policy-paths">JSON Pointer，每行一项（如 /data/private）</label><fieldset disabled={op.busy}><CodeArea id="report-policy-paths" formatJson={false} value={text} onChange={value => { setText(value); setNotice('') }} placeholder={'/data/access_token\n/profile/mobile'} /></fieldset>{!text && <p className="text-xs text-muted-foreground">尚未配置额外路径，常见凭据遮罩仍然生效。</p>}<p className="text-xs text-muted-foreground">路径内 / 写作 ~1，~ 写作 ~0。全文本机导出选择“包含实际报文”时仍会包含敏感信息。</p><Button disabled={op.busy || !dirty} onClick={() => void op.run(signal => governance.savePolicy({ sensitiveJsonPaths: pointers(text) }, signal), value => { const s = value.sensitiveJsonPaths.join('\n'); setText(s); setSaved(s); setNotice('设置已保存，之后生成的报告按此规则遮罩。') })}>{op.busy ? '保存中…' : '保存脱敏路径'}</Button></>}{op.error && <p role="alert" className="text-xs text-red-600">{op.error}</p>}{!ready && !op.busy && <Button variant="outline" onClick={() => void op.run(governance.policy, value => { const s = value.sensitiveJsonPaths.join('\n'); setText(s); setSaved(s); setReady(true) })}>重新读取</Button>}{notice && <p role="status" className="text-xs">{notice}</p>}{discard && <div role="alert" className="space-y-2 rounded border border-amber-500 p-3"><p className="text-xs">脱敏设置有未保存修改。</p><div className="flex gap-2"><Button variant="outline" onClick={() => setDiscard(false)}>继续编辑</Button><Button variant="destructive" onClick={() => { setText(saved); setDiscard(false); setOpen(false); op.invalidate() }}>放弃并关闭</Button></div></div>}
+  </DialogContent></Dialog></>
+}

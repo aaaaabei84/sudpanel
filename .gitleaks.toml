@@ -1,0 +1,48 @@
+# Gitleaks 8.30.1: reviewed test fixtures only; retain every built-in detection rule.
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Test-only deterministic randomKey seeds repeated four times; exact seed and file only."
+targetRules = ["generic-api-key"]
+condition = "AND"
+paths = ["(?:^|/)src/test/java/com/sudpanel/api/script/ApiScriptSandboxTest\\.java$"]
+regexTarget = "secret"
+regexes = [
+  "^\\Q0123456789abcdef\\E$",
+  "^\\Qabcdef0123456789\\E$",
+]
+
+[[allowlists]]
+description = "Test-only FICTIONAL HMAC fixture keys; 17 success vectors independently recomputed."
+targetRules = ["generic-api-key"]
+condition = "AND"
+paths = ["(?:^|/)src/test/resources/com/sudpanel/api/script/signature\\-fixtures\\.json$"]
+regexTarget = "secret"
+regexes = [
+  "^\\Qfictl-secret-key-001\\E$",
+  "^\\Qfictl-secret-key-002\\E$",
+  "^\\Qfictl-secret-key-003\\E$",
+  "^\\Qfictl-secret-key-004\\E$",
+  "^\\Qfictl-secret-key-009\\E$",
+  "^\\Qfictl-secret-key-010\\E$",
+  "^\\Qfictl-secret-key-011\\E$",
+  "^\\Qfictl-secret-key-013\\E$",
+  "^\\Qfictl-secret-key-014\\E$",
+  "^\\Qfictl-secret-key-015\\E$",
+  "^\\Qfictl-secret-key-016\\E$",
+  "^\\Qfictl-secret-key-017\\E$",
+  "^\\Qfictl-secret-key-020\\E$",
+  "^\\Qfictl-secret-key-021\\E$",
+  "^\\Qfictl-secret-key-023\\E$",
+]
+
+[[allowlists]]
+description = "Exact offline curl-parser test fragment; explicit authorization sentinel on an example endpoint."
+targetRules = ["curl-auth-header"]
+condition = "AND"
+paths = ["(?:^|/)src/test/java/com/sudpanel/api/ApiInterchangeTest\\.java$"]
+regexTarget = "match"
+regexes = [
+  "^\\Qcurl(\"curl https://example.test -XGET --data-raw 'text'\"));\n        assertThat(s.method()).isEqualTo(\"GET\"); assertThat(s.body()).isEqualTo(\"text\");\n    }\n\n    @Test void explicitCurlAuthorizationWinsOverHelperAndMultipleHelpersAreRejected() {\n        var p = curl(\"curl https://example.test -u 'fake:password' -H 'Authorization: ExplicitFixture'\\E$",
+]

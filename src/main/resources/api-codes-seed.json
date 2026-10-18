@@ -1,0 +1,1117 @@
+{
+  "source": "SudPanel 简短返回码索引，按公开接口资料整理",
+  "sourceUrl": "https://docs-gitbook.sud.tech/zh-CN/app/Server/ErrorCode.html",
+  "note": "仅保留返回码、分类与简短标签。详细约束以官方文档为准；不包含官方文档的解释段落、SDK源码或二进制。",
+  "codes": [
+    {
+      "scope": "CLIENT",
+      "scopeLabel": "客户端错误码",
+      "code": 0,
+      "message": "成功"
+    },
+    {
+      "scope": "CLIENT",
+      "scopeLabel": "客户端错误码",
+      "code": -1,
+      "message": "未知错误 通常是网络问题"
+    },
+    {
+      "scope": "CLIENT",
+      "scopeLabel": "客户端错误码",
+      "code": -10100,
+      "message": "游戏引擎不支持"
+    },
+    {
+      "scope": "CLIENT",
+      "scopeLabel": "客户端错误码",
+      "code": -10101,
+      "message": "下载被取消"
+    },
+    {
+      "scope": "CLIENT",
+      "scopeLabel": "客户端错误码",
+      "code": -10102,
+      "message": "下载包，解压失败"
+    },
+    {
+      "scope": "CLIENT",
+      "scopeLabel": "客户端错误码",
+      "code": -10103,
+      "message": "没有成功初始化SDK"
+    },
+    {
+      "scope": "CLIENT",
+      "scopeLabel": "客户端错误码",
+      "code": -10104,
+      "message": "接口调用参数错误"
+    },
+    {
+      "scope": "CLIENT",
+      "scopeLabel": "客户端错误码",
+      "code": -10200,
+      "message": "包下载错误，MD5校验不通过"
+    },
+    {
+      "scope": "CLIENT",
+      "scopeLabel": "客户端错误码",
+      "code": -10300,
+      "message": "旧版游戏加载超时"
+    },
+    {
+      "scope": "CLIENT",
+      "scopeLabel": "客户端错误码",
+      "code": -10302,
+      "message": "下载超时"
+    },
+    {
+      "scope": "CLIENT",
+      "scopeLabel": "客户端错误码",
+      "code": -10400,
+      "message": "磁盘空间不足"
+    },
+    {
+      "scope": "CLIENT",
+      "scopeLabel": "客户端错误码",
+      "code": -10401,
+      "message": "文件不存在"
+    },
+    {
+      "scope": "CLIENT",
+      "scopeLabel": "客户端错误码",
+      "code": -10402,
+      "message": "网络请求超时"
+    },
+    {
+      "scope": "CLIENT",
+      "scopeLabel": "客户端错误码",
+      "code": -10403,
+      "message": "网络连接中断"
+    },
+    {
+      "scope": "CLIENT",
+      "scopeLabel": "客户端错误码",
+      "code": -10404,
+      "message": "SSL握手异常，证书验证失败或协议不匹配"
+    },
+    {
+      "scope": "CLIENT",
+      "scopeLabel": "客户端错误码",
+      "code": -10405,
+      "message": "DNS解析异常，网络不通或其他"
+    },
+    {
+      "scope": "CLIENT",
+      "scopeLabel": "客户端错误码",
+      "code": -10406,
+      "message": "Socket连接失败"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -999,
+      "message": "请求被取消"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1000,
+      "message": "URL格式无效"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1001,
+      "message": "请求超时"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1002,
+      "message": "不支持的URL"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1003,
+      "message": "无法找到指定的主机"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1004,
+      "message": "无法连接到主机"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1005,
+      "message": "网络连接丢失"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1006,
+      "message": "DNS查询失败"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1007,
+      "message": "HTTP重定向次数过多"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1008,
+      "message": "资源不可用"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1009,
+      "message": "没有连接到互联网"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1010,
+      "message": "重定向到不存在的地址"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1011,
+      "message": "服务器返回了错误的响应"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1012,
+      "message": "用户取消了认证请求"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1013,
+      "message": "需要用户认证"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1014,
+      "message": "资源内容为空"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1015,
+      "message": "无法解码原始数据"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1016,
+      "message": "无法解码内容数据"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1017,
+      "message": "无法解析响应"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1018,
+      "message": "国际漫游关闭"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1019,
+      "message": "通话进行中"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1020,
+      "message": "数据使用不允许"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1021,
+      "message": "请求体流耗尽"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1022,
+      "message": "连接不满足ATS要求"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1100,
+      "message": "文件不存在"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1101,
+      "message": "文件是一个目录"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1102,
+      "message": "没有读取文件的权限"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1103,
+      "message": "数据长度超出最大值"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1104,
+      "message": "文件位于安全区域外"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1200,
+      "message": "安全连接失败"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1201,
+      "message": "服务器证书日期无效"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1202,
+      "message": "服务器证书不受信任"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1203,
+      "message": "服务器证书具有未知的根证书"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1204,
+      "message": "服务器证书尚未生效"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1205,
+      "message": "客户端证书被拒绝"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -1206,
+      "message": "需要客户端证书"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -2000,
+      "message": "无法从网络加载"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -3000,
+      "message": "无法创建文件"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -3001,
+      "message": "无法打开文件"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -3002,
+      "message": "无法关闭文件"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -3003,
+      "message": "无法写入文件"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -3004,
+      "message": "无法删除文件"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -3005,
+      "message": "无法移动文件"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -3006,
+      "message": "下载解码过程中失败"
+    },
+    {
+      "scope": "IOS",
+      "scopeLabel": "iOS 系统错误码",
+      "code": -3007,
+      "message": "下载解码失败未完成"
+    },
+    {
+      "scope": "SDK",
+      "scopeLabel": "服务端 SDK 错误码",
+      "code": 0,
+      "message": "成功"
+    },
+    {
+      "scope": "SDK",
+      "scopeLabel": "服务端 SDK 错误码",
+      "code": 1001,
+      "message": "Token创建失败"
+    },
+    {
+      "scope": "SDK",
+      "scopeLabel": "服务端 SDK 错误码",
+      "code": 1002,
+      "message": "Token校验失败"
+    },
+    {
+      "scope": "SDK",
+      "scopeLabel": "服务端 SDK 错误码",
+      "code": 1003,
+      "message": "Token解析失败"
+    },
+    {
+      "scope": "SDK",
+      "scopeLabel": "服务端 SDK 错误码",
+      "code": 1004,
+      "message": "Token非法"
+    },
+    {
+      "scope": "SDK",
+      "scopeLabel": "服务端 SDK 错误码",
+      "code": 1005,
+      "message": "Token过期"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 0,
+      "message": "成功"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 10001,
+      "message": "服务异常"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 10002,
+      "message": "参数错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 10003,
+      "message": "AppKey非法"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 10004,
+      "message": "AppSecret非法"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 10005,
+      "message": "App平台信息非法"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 10010,
+      "message": "Token创建失败"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 10011,
+      "message": "Token校验失败"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 10012,
+      "message": "Token解析失败"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 10021,
+      "message": "Token非法"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 10022,
+      "message": "Token过期"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 10030,
+      "message": "Unity版本非法"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 10101,
+      "message": "App配置数据不存在"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 10102,
+      "message": "App数据不存在"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 10103,
+      "message": "App Proxy配置不存在"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 10104,
+      "message": "App未授权"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 10105,
+      "message": "App未关联当前小游戏"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 10111,
+      "message": "小游戏不存在"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 10121,
+      "message": "SDK配置信息不存在"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 10122,
+      "message": "游戏配置信息不存在"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 10124,
+      "message": "游戏在该地区不支持"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 70100,
+      "message": "应用未被授权"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 70101,
+      "message": "无效的授权串"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 70401,
+      "message": "访问认证失败"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 70410,
+      "message": "游戏服务异常"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 70420,
+      "message": "游戏场次不存在"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 70501,
+      "message": "订单已存在"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 70502,
+      "message": "无效的订单号"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 70503,
+      "message": "订单不存在"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 70504,
+      "message": "订单无关联的用户结算信息"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100000,
+      "message": "通用错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100001,
+      "message": "参数错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100002,
+      "message": "参数错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100003,
+      "message": "参数错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100004,
+      "message": "参数错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100005,
+      "message": "参数错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100008,
+      "message": "数据库查询错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100009,
+      "message": "数据库插入错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100010,
+      "message": "数据库修改错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100011,
+      "message": "参数错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100012,
+      "message": "参数错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100013,
+      "message": "pushEvent参数格式错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100100,
+      "message": "登录错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100101,
+      "message": "登录错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100200,
+      "message": "加入游戏座位错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100201,
+      "message": "游戏进行中，玩家不能上游戏座位"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100202,
+      "message": "游戏座位已满"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100203,
+      "message": "该玩家已经在游戏座位上，不能重复加入"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100204,
+      "message": "游戏座位已被占，不能加入游戏座位"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100300,
+      "message": "退出错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100301,
+      "message": "不在游戏座位"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100302,
+      "message": "当前状态不允许离开"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100400,
+      "message": "该玩家已经准备，不能重复准备"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100401,
+      "message": "该玩家尚未准备，不能取消准备"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100500,
+      "message": "开始游戏错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100501,
+      "message": "游戏已开始，不能重复开始"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100502,
+      "message": "队长才能开始游戏"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100503,
+      "message": "游戏座位有玩家未点击准备"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100504,
+      "message": "已经准备的人数小于游戏最小开始人数"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100600,
+      "message": "踢人错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100601,
+      "message": "踢人错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100602,
+      "message": "踢人错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100603,
+      "message": "踢人错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100700,
+      "message": "换队长错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100800,
+      "message": "逃跑错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100801,
+      "message": "逃跑错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100802,
+      "message": "逃跑错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100900,
+      "message": "解散错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100901,
+      "message": "解散错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100902,
+      "message": "解散错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 100903,
+      "message": "解散错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 101000,
+      "message": "切换游戏模式错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 101001,
+      "message": "切换游戏模式错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 101002,
+      "message": "游戏中不能切换游戏模式"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 101003,
+      "message": "机器人（AI）不能成为队长"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 101004,
+      "message": "房间不存在"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 101005,
+      "message": "创建订单cmd错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 101006,
+      "message": "重复带入积分"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 101007,
+      "message": "游戏房间未设定"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 101008,
+      "message": "小于带入最低积分值错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 101009,
+      "message": "大于带入积分值错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 101010,
+      "message": "站起错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 101011,
+      "message": "设置游戏玩法错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 101012,
+      "message": "创建订单超时错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 101013,
+      "message": "游戏已创建，不能重复创建"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 101014,
+      "message": "uid超过128字节"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 101015,
+      "message": "玩家不存在房间中"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 101016,
+      "message": "游戏已结束"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 101017,
+      "message": "当前回合操作人不是该玩家"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 105000,
+      "message": "登录令牌错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 105001,
+      "message": "登录令牌创建失败"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 105002,
+      "message": "登录令牌校验失败"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 105003,
+      "message": "登录令牌解析失败"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 105004,
+      "message": "登录令牌无效"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 105005,
+      "message": "登录令牌已过期"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 105006,
+      "message": "小游戏不存在或者服务端内部通信错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 105007,
+      "message": "服务端内部通信错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 105008,
+      "message": "get_sstoken接口错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 105009,
+      "message": "取令牌响应格式错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 105010,
+      "message": "get_user_info接口错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 105011,
+      "message": "用户信息响应格式错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 105012,
+      "message": "update_sstoken接口错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 105013,
+      "message": "更新令牌响应格式错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 105014,
+      "message": "游戏数据配置错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 105015,
+      "message": "取令牌HTTP响应异常"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 105016,
+      "message": "用户信息HTTP响应异常"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 105017,
+      "message": "更新令牌HTTP响应异常"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 105100,
+      "message": "服务端内部错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 105101,
+      "message": "服务端内部通信错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 105102,
+      "message": "服务端内部通信错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 105103,
+      "message": "服务端内部通信错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 105104,
+      "message": "服务端内部通信错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 105105,
+      "message": "服务端内部通信错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 105106,
+      "message": "服务端内部通信错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 105107,
+      "message": "服务端内部通信错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 105108,
+      "message": "服务端内部通信错误"
+    },
+    {
+      "scope": "GAME",
+      "scopeLabel": "游戏服务端错误码",
+      "code": 110501,
+      "message": "大模型AI已被使用"
+    }
+  ]
+}

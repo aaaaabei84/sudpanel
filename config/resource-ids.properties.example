@@ -1,0 +1,11 @@
+# Copy to $SUDPANEL_DATA_DIR/config/resource-ids.properties
+# Default data root: ~/.sudpanel-open
+# Map a test point resourceKey to a resource-id from your own test application.
+# Example: app_common_self_in=com.example.game:id/join_button
+# @reuse:<resourceKey> reuses coordinates located earlier in the same run.
+# Calibrated button-group coordinates take priority over this file.
+app_common_self_in=
+app_common_self_ready=
+app_common_self_playing=
+app_common_self_captain=
+app_common_self_kick=

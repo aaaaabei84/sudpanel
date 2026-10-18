@@ -1,0 +1,9 @@
+import { req } from '@/lib/api'
+import type { PerfSample } from '@/types'
+export type Health = { checkedAt?: string; batteryLevel?: number | null; temperatureC?: number | null; powered?: boolean | null; thermalStatus?: number | null; batterySource?: string; thermalSource?: string }
+export type HealthPolicy = { temperatureWarnC: number | null; thermalWarn: number | null }
+export type SampleQuality = { version?: number; durationMs?: number | null; offsetMs?: number | null; intervalMs?: number | null; sources?: Record<string, { status: string; source: string; reason?: string | null }> }
+export type QualitySample = PerfSample & { quality?: SampleQuality }
+export type LoopQuality = { state: string; message?: string; startHealth?: Health | null; endHealth?: Health | null; policy?: HealthPolicy; warnings?: string[]; continuity?: string; processUnknownReads?: number; processAbsentReads?: number; events?: { type: string; offsetMs: number }[]; sampleCount?: number; samplingElapsedMs?: number | null; nominalIntervalMs?: number | null; skippedSlots?: number; actualIntervalAvgMs?: number | null; effectiveHz?: number | null; acquisitionAvgMs?: number | null; acquisitionMaxMs?: number | null; missing?: Record<string, { count: number; percent: number | null }>; sourceCounts?: Record<string, number> }
+export const qualityApi = { loop: (id: number, signal?: AbortSignal) => req<LoopQuality>(`/api/perf/loops/${id}/quality`, undefined, { signal }), policy: (signal?: AbortSignal) => req<HealthPolicy>('/api/perf/health-policy', undefined, { signal }), savePolicy: (policy: HealthPolicy) => req<HealthPolicy>('/api/perf/health-policy', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(policy) }) }
+export const metric = (value: unknown, unit = '') => typeof value === 'number' && Number.isFinite(value) ? `${Number(value.toFixed(2))}${unit}` : '未知'
